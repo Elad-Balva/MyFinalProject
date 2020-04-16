@@ -1,0 +1,88 @@
+﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<div class="row my-grid-borders">
+    <p> </p>
+</div>
+<div class="row my-grid-borders">
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_trump }} alt='Missing'></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_obama }} alt='Missing'></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_bush }} alt='Missing'></div>
+    <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_clinton }} alt='Missing'></div>
+</div>
+<div class="row my-grid-borders">
+    <h2>UFC's Dataset Fields</h2>
+</div>
+<div class="row my-grid-borders">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>R_Fighter</td>
+                <td>לוחם הלובש כפפות אדומות</td>
+            </tr>
+            <tr>
+                <td>B_Fighter</td>
+                <td>לוחם הלובש כפפות כחולות</td>
+            </tr>
+            <tr>
+                <td>Referee</td>
+                <td>השופט הראשי של אותו קרב</td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>תאריך הקרב</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>מיקום הקרב</td>
+            </tr>
+            <tr>
+                <td>Winner</td>
+                <td>צבע הכפפות של המנצח</td>
+            </tr>
+            <tr>
+                <td>Title_Bout</td>
+                <td>האם הקרב היה על חגורה</td>
+            </tr>
+            <tr>
+                <td>Weight_Class</td>
+                <td>קטגורית משקל הלוחמים</td>
+            </tr>
+            <tr>
+                <td>No_Of_Rounds</td>
+                <td>מספר הסיבובים בקרב</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row my-grid-borders">
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form1.csrf_token }}
+            <input class="btn btn-success" type="submit" name="action" value="Expand">
+        </form>
+    </div>
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form2.csrf_token }}
+            <input class="btn btn-danger" type="submit" name="action" value="Collapse">
+        </form>
+    </div>
+</div>
+<div class="row my-grid-borders">
+    {{ raw_data_table | safe}}
+</div>
+
+
+{% endblock %}
