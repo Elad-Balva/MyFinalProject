@@ -59,6 +59,7 @@
     <Content Include="MyFinalProject\static\imgs\ufclogo.png" />
     <Content Include="MyFinalProject\static\imgs\ufclogo1.png" />
     <Content Include="MyFinalProject\templates\data.html" />
+    <Content Include="MyFinalProject\templates\query.html" />
     <Content Include="MyFinalProject\templates\ufcdata.html" />
     <Content Include="requirements.txt" />
     <Content Include="MyFinalProject\static\content\bootstrap.css" />

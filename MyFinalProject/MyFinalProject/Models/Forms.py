@@ -22,4 +22,6 @@ class CollapseForm(FlaskForm):
     name="Collapse" 
     value="Collapse"
 
-
+class UFCForm(FlaskForm):
+    weight_class = SelectField('Select a weight class:' , validators = [DataRequired] )
+    submit = SubmitField('submit')
