@@ -8,18 +8,22 @@
 <div class="row my-grid-borders">
     <p> </p>
 </div>
+
 <div class="row my-grid-borders">
     <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_trump }} alt='Missing'></div>
     <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_obama }} alt='Missing'></div>
     <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_bush }} alt='Missing'></div>
     <div class="col-md-2 my-grid-borders"><img class="contain" src={{ img_clinton }} alt='Missing'></div>
 </div>
+
 <div class="row my-grid-borders">
-    <div class="col-md-5 my-grid-borders"><a href="{{ url_for('ufcdata') }}">UFC Dataset</a></div>
     <div class="col-md-5 my-grid-borders">
-        <p ckass="heb">דף הדאטה של אליפות הלחימה האולטימטיבית</p>
+        <a href="{{ url_for('ufcdata') }}">UFC Dataset</a>
+    </div>
+
+    <div class="col-md-5 my-grid-borders">
+        <h4 ckass="heb">קישור לדף הדאטה של אליפות הלחימה האולטימטיבית</h4>
     </div>
 </div>
 
-
-{% endblock %}
+    {% endblock %}

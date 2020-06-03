@@ -7,8 +7,7 @@
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
     {% for message in messages %}
-<h3>{{ message[1] }}</h3>
-<br />
+
     {% endfor %}
 {% endif %}
 {% endwith %}
@@ -111,14 +110,4 @@
     </table>
 </form>
 
-<style>
-    td, tr, table {
-        font-size: 22px
-    }
-
-    h2 {
-        position: relative;
-        left: 450px;
-    }
-</style>
     {% endblock %}

@@ -11,18 +11,13 @@
 </head>
 
 <body style="background-color:lightgrey">
-    <nav class="navbar navbar-inverse navbar-custom">
-        <div class="container-fluid">
-            <div class="navbar-header navbar-custom1">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid-fixed-top">
+            <div class="navbar-header navbar-fixed-top-custom1">
                 <a class="navbar-brand" style="color:snow" href="#">              </a>
                 <a class="navbar-brand" style="color:snow" href="#">UFC Fight History</a>
             </div>
-            <ul class="nav navbar-nav navbar-custom1">
+            <ul class="nav navbar-nav navbar-fixed-top-custom1">
 
                 <li><a style="color:snow" href="{{ url_for('home') }}">Home</a></li>
                 <li><a style="color:snow" href="{{ url_for('about') }}">About</a></li>
@@ -32,7 +27,7 @@
                 <li><a style="color:snow" href="{{ url_for('login') }}">Login</a></li>
             </ul>
         </div>
-    </nav>
+    </div>
 
 
 
