@@ -17,6 +17,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>MyFinalProject</Name>
     <RootNamespace>MyFinalProject</RootNamespace>
+    <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="MyFinalProject\Models\Forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MyFinalProject\Models\LocalDatabaseRoutines.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MyFinalProject\Models\QueryFormStructure.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="runserver.py" />
@@ -47,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyFinalProject\static\data\data.csv" />
+    <Content Include="MyFinalProject\static\data\users.csv" />
     <Content Include="MyFinalProject\static\imgs\tichonet.png" />
+    <Content Include="MyFinalProject\static\imgs\ufc100.jpg" />
     <Content Include="MyFinalProject\static\imgs\ufc12.jpg" />
     <Content Include="MyFinalProject\static\imgs\ufc13.jpg" />
     <Content Include="MyFinalProject\static\imgs\ufc14.jpg" />
@@ -59,7 +68,9 @@
     <Content Include="MyFinalProject\static\imgs\ufclogo.png" />
     <Content Include="MyFinalProject\static\imgs\ufclogo1.png" />
     <Content Include="MyFinalProject\templates\data.html" />
+    <Content Include="MyFinalProject\templates\login.html" />
     <Content Include="MyFinalProject\templates\query.html" />
+    <Content Include="MyFinalProject\templates\register.html" />
     <Content Include="MyFinalProject\templates\ufcdata.html" />
     <Content Include="requirements.txt" />
     <Content Include="MyFinalProject\static\content\bootstrap.css" />

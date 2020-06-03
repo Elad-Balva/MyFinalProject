@@ -3,7 +3,7 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template
+from flask import render_template, flash, redirect
 from MyFinalProject import app
 from flask import request
 
@@ -19,13 +19,16 @@ from MyFinalProject.Models.Forms import UFCForm
 import matplotlib.pyplot as plt
 import io
 import base64from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvasfrom matplotlib.figure import Figure
-
-
+from MyFinalProject.Models.QueryFormStructure import QueryFormStructure 
+from MyFinalProject.Models.QueryFormStructure import LoginFormStructure 
+from MyFinalProject.Models.QueryFormStructure import UserRegistrationFormStructure
+from MyFinalProject.Models.LocalDatabaseRoutines import create_LocalDatabaseServiceRoutines
 
 from os import path
 from flask_bootstrap import Bootstrap
 bootstrap = Bootstrap(app)
 
+db_Functions = create_LocalDatabaseServiceRoutines()
 app.config['SECRET_KEY'] = 'The first argument to the field'
 
 
@@ -39,7 +42,7 @@ def home():
     
     return render_template(
         'index.html',
-        title='Home Page',
+        title='Home',
         img_UFC = '/static/imgs/ufclogo1.png',
         year=datetime.now().year
     )
@@ -53,6 +56,7 @@ def contact():
 
     return render_template(
         'contact.html',
+        title='Contacts',
         year=datetime.now().year,
         img_tichonet = '/static/imgs/tichonet.png'
     )
@@ -65,6 +69,7 @@ def about():
     """Renders the about page."""
     return render_template(
         'about.html',
+        title='About',
         year=datetime.now().year,
         img_tichonet = '/static/imgs/tichonet.png'
     )
@@ -120,7 +125,7 @@ def ufcdata():
 def query():
 
     form1 = UFCForm()
-    chart = '/static/imgs/ufclogo1.png'
+    chart = '/static/imgs/ufc100.jpg'
 
    
     df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/data.csv'))
@@ -159,3 +164,48 @@ def query():
 
 def plot_to_img(fig):    pngImage = io.BytesIO()    FigureCanvas(fig).print_png(pngImage)    pngImageB64String = "data:image/png;base64,"    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')    return pngImageB64String
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = UserRegistrationFormStructure(request.form)
+
+    if (request.method == 'POST' and form.validate()):
+        if (not db_Functions.IsUserExist(form.username.data)):
+            db_Functions.AddNewUser(form)
+            db_table = ""
+
+            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
+            # Here you should put what to do (or were to go) if registration was good
+        else:
+            flash('Error: User with this Username already exist ! - '+ form.username.data)
+            form = UserRegistrationFormStructure(request.form)
+
+    return render_template(
+        'register.html', 
+        form=form, 
+        title='Register',
+        year=datetime.now().year,
+        repository_name='Pandas',
+        )
+
+# -------------------------------------------------------
+# Login page
+# This page is the filter before the data analysis
+# -------------------------------------------------------
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginFormStructure(request.form)
+
+    if (request.method == 'POST' and form.validate()):
+        if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
+          return redirect('query')
+            #return redirect('<were to go if login is good!')
+        else:
+            flash('Error in - Username and/or password')
+   
+    return render_template(
+        'login.html', 
+        form=form, 
+        title='Login',
+        year=datetime.now().year,
+        repository_name='Pandas',
+        )

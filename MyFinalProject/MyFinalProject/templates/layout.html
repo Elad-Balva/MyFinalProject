@@ -10,11 +10,15 @@
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
 </head>
 
-<body>
-
-    <nav class="navbar navbar-default navbar-custom">
+<body style="background-color:lightgrey">
+    <nav class="navbar navbar-inverse navbar-custom">
         <div class="container-fluid">
             <div class="navbar-header navbar-custom1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" style="color:snow" href="#">              </a>
                 <a class="navbar-brand" style="color:snow" href="#">UFC Fight History</a>
             </div>
@@ -24,7 +28,8 @@
                 <li><a style="color:snow" href="{{ url_for('about') }}">About</a></li>
                 <li><a style="color:snow" href="{{ url_for('contact') }}">Contacts</a></li>
                 <li><a style="color:snow" href="{{ url_for('data') }}">Data</a></li>
-                <li><a style="color:snow" href="{{ url_for('query') }}">Query</a></li>
+                <li><a style="color:snow" href="{{ url_for('register') }}">Register</a></li>
+                <li><a style="color:snow" href="{{ url_for('login') }}">Login</a></li>
             </ul>
         </div>
     </nav>
